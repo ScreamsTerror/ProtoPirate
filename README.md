@@ -27,7 +27,8 @@ Decoders:
 - Hyundai V0
 
 Encoders: **Coming Soon**
-
+- KIA V0
+  
 ---
 
 ## **Credits**
