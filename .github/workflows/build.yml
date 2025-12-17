@@ -1,0 +1,30 @@
+name: Build ProtoPirate (.fap)
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install ufbt
+        run: npm install -g @flipperdevices/ufbt
+
+      - name: Initialize Flipper SDK
+        run: ufbt init
+
+      - name: Build Flipper app
+        run: ufbt build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ProtoPirate-fap
+          path: |
+            build/**/*.fap
+            build/**/*

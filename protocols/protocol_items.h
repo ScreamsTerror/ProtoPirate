@@ -14,5 +14,11 @@
 #include "suzuki.h"
 #include "vw.h"
 #include "fiat_v0.h"
+#include "toyota_v0.h"
+#include "honda_v0.h"
+#include "nissan_v0.h"
+#include "bmw_v0.h"
+#include "mercedes_v0.h"
+#include "hyundai_v0.h"
 
 extern const SubGhzProtocolRegistry protopirate_protocol_registry;

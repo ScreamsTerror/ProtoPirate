@@ -18,6 +18,13 @@ Decoders:
 - Subaru
 - Suzuki
 - Volkswagen (VW)
+- Fiat V0
+- Toyota V0
+- Honda V0
+- Nissan V0
+- BMW V0
+- Mercedes V0
+- Hyundai V0
 
 Encoders: **Coming Soon**
 
