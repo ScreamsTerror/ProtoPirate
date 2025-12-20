@@ -21,17 +21,13 @@ const SubGhzProtocol* protopirate_protocol_registry_items[] = {
     &vw_protocol,
     
     // European PSA Group
-    &peugeot_protocol,
     &citroen_protocol,
     
-    // European BMW/Fiat
-    &bmw_protocol_v0,
+    // European Fiat
     &fiat_protocol_v0,
     
-    // Japanese/Korean manufacturers
-    &toyota_protocol_v0,
+    // Japanese manufacturers
     &nissan_protocol_v0,
-    &mercedes_protocol_v0,
 };
 
 const SubGhzProtocolRegistry protopirate_protocol_registry = {

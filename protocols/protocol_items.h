@@ -24,15 +24,11 @@
 #include "vw.h"
 
 // European manufacturers - PSA Group
-#include "peugeot.h"
 #include "citroen.h"
 
-// European manufacturers - BMW/Fiat
-#include "bmw_v0.h"
+// European manufacturers - Fiat/Japanese
 #include "fiat_v0.h"
-#include "toyota_v0.h"
 #include "nissan_v0.h"
-#include "mercedes_v0.h"
 
 // American manufacturers
 // Note: tesla.h is not implemented yet
