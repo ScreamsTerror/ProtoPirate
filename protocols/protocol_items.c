@@ -15,6 +15,7 @@ const SubGhzProtocol* protopirate_protocol_registry_items[] = {
     &suzuki_protocol,
     &mazda_protocol,
     &honda_protocol_v0,
+    &honda_protocol_v2,
     &mitsubishi_protocol,
     
     // European VAG Group

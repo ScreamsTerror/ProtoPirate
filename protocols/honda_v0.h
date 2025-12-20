@@ -12,25 +12,30 @@
 
 #define HONDA_PROTOCOL_V0_NAME "Honda V0"
 
-typedef struct SubGhzProtocolDecoderHonda SubGhzProtocolDecoderHonda;
-typedef struct SubGhzProtocolEncoderHonda SubGhzProtocolEncoderHonda;
+typedef struct SubGhzProtocolDecoderHondaV0 SubGhzProtocolDecoderHondaV0;
+typedef struct SubGhzProtocolEncoderHondaV0 SubGhzProtocolEncoderHondaV0;
 
-extern const SubGhzProtocolDecoder subghz_protocol_honda_decoder;
-extern const SubGhzProtocolEncoder subghz_protocol_honda_encoder;
+extern const SubGhzProtocolDecoder honda_protocol_v0_decoder;
+extern const SubGhzProtocolEncoder honda_protocol_v0_encoder;
 extern const SubGhzProtocol honda_protocol_v0;
 
-void* subghz_protocol_decoder_honda_alloc(SubGhzEnvironment* environment);
-void subghz_protocol_decoder_honda_free(void* context);
-void subghz_protocol_decoder_honda_reset(void* context);
-void subghz_protocol_decoder_honda_feed(void* context, bool level, uint32_t duration);
-uint8_t subghz_protocol_decoder_honda_get_hash_data(void* context);
-SubGhzProtocolStatus subghz_protocol_decoder_honda_serialize(
+void* honda_protocol_decoder_v0_alloc(SubGhzEnvironment* environment);
+void honda_protocol_decoder_v0_free(void* context);
+void honda_protocol_decoder_v0_reset(void* context);
+void honda_protocol_decoder_v0_feed(void* context, bool level, uint32_t duration);
+uint8_t honda_protocol_decoder_v0_get_hash_data(void* context);
+SubGhzProtocolStatus honda_protocol_decoder_v0_serialize(
     void* context,
     FlipperFormat* flipper_format,
     SubGhzRadioPreset* preset);
-SubGhzProtocolStatus subghz_protocol_decoder_honda_deserialize(void* context, FlipperFormat* flipper_format);
-void subghz_protocol_decoder_honda_get_string(void* context, FuriString* output);
+SubGhzProtocolStatus
+honda_protocol_decoder_v0_deserialize(void* context, FlipperFormat* flipper_format);
+void honda_protocol_decoder_v0_get_string(void* context, FuriString* output);
 
-// Additional encoder functions
-void subghz_protocol_encoder_honda_set_button(void* context, uint8_t button);
-void subghz_protocol_encoder_honda_set_counter(void* context, uint16_t counter);
+// Optional: Encoder functions if transmission is supported
+void* honda_protocol_encoder_v0_alloc(SubGhzEnvironment* environment);
+void honda_protocol_encoder_v0_free(void* context);
+void honda_protocol_encoder_v0_stop(void* context);
+LevelDuration honda_protocol_encoder_v0_yield(void* context);
+SubGhzProtocolStatus
+honda_protocol_encoder_v0_deserialize(void* context, FlipperFormat* flipper_format);

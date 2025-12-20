@@ -18,6 +18,7 @@
 #include "suzuki.h"
 #include "mazda.h"
 #include "honda_v0.h"
+#include "honda_v2.h"
 #include "mitsubishi.h"
 
 // European manufacturers - VAG Group
