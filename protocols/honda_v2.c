@@ -494,22 +494,59 @@ honda_protocol_encoder_v2_deserialize(void* context, FlipperFormat* flipper_form
 // Yield next transmission data
 LevelDuration honda_protocol_encoder_v2_yield(void* context)
 {
-    furi_assert(context);
     SubGhzProtocolEncoderHondaV2* instance = context;
 
-    if (instance->encoder.size_upload == 0)
-    {
-        instance->is_running = false;
-        return level_duration_make(0, 0);
+    if (!instance || !instance->is_running) {
+        return level_duration_reset();
     }
-
-    LevelDuration level_duration = instance->encoder.upload[instance->encoder.upload_index++];
     
-    if (instance->encoder.upload_index >= instance->encoder.size_upload)
-    {
-        instance->encoder.upload_index = 0;
+    // 64 preamble + 2 sync + 128 data + 1 trailing = 195
+    if (instance->preamble_count >= 195) {
         instance->is_running = false;
+        instance->preamble_count = 0;
+        return level_duration_reset();
     }
-
-    return level_duration;
+    
+    LevelDuration result;
+    
+    // Preamble: 64 transitions (32 long-long pairs)
+    if (instance->preamble_count < 64) {
+        bool is_high = (instance->preamble_count % 2) == 0;
+        result = level_duration_make(is_high, honda_protocol_v2_const.te_long);
+    }
+    // Sync high
+    else if (instance->preamble_count == 64) {
+        result = level_duration_make(true, honda_protocol_v2_const.te_long);
+    }
+    // Sync low
+    else if (instance->preamble_count == 65) {
+        result = level_duration_make(false, honda_protocol_v2_const.te_short);
+    }
+    // Data bits: 64 bits (128 transitions, counts 66-193)
+    else if (instance->preamble_count < 194) {
+        uint32_t data_transition = instance->preamble_count - 66;
+        uint32_t bit_num = data_transition / 2;
+        bool is_high = (data_transition % 2) == 0;
+        
+        uint64_t bit_mask = 1ULL << (63 - bit_num);
+        uint8_t current_bit = (instance->generic.data & bit_mask) ? 1 : 0;
+        
+        if (current_bit) {
+            // Manchester 1: short high, long low
+            uint32_t duration = is_high ? honda_protocol_v2_const.te_short : honda_protocol_v2_const.te_long;
+            result = level_duration_make(is_high, duration);
+        } else {
+            // Manchester 0: long high, short low
+            uint32_t duration = is_high ? honda_protocol_v2_const.te_long : honda_protocol_v2_const.te_short;
+            result = level_duration_make(is_high, duration);
+        }
+    }
+    // Trailing HIGH pulse to signal end-of-transmission (count 194)
+    else {
+        // Send a long HIGH that exceeds the decoder's end threshold (>2000µs)
+        result = level_duration_make(true, honda_protocol_v2_const.te_long * 5);
+    }
+    
+    instance->preamble_count++;
+    return result;
 }
