@@ -19,11 +19,7 @@ The app supports both decoding and encoding for multiple automotive key-fob fami
 - Suzuki
 - Volkswagen (VW)
 - Fiat V0
-- Toyota V0
-- Honda V0
-- Nissan V0
-- BMW V0
-- Mercedes V0
+- Honda V2
 - Hyundai V0
 
 ### Encoders:
@@ -32,11 +28,7 @@ The app supports both decoding and encoding for multiple automotive key-fob fami
 - Subaru
 - Suzuki
 - Volkswagen (VW)
-- Toyota V0
 - Honda V0
-- Nissan V0
-- BMW V0
-- Mercedes V0
 - Hyundai V0
 
 *Note: Encoder functionality may vary by protocol. Some protocols support full encoding while others support basic transmission.*
