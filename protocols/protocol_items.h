@@ -16,10 +16,8 @@
 #include "ford_v0.h"
 #include "subaru.h"
 #include "suzuki.h"
-#include "mazda.h"
 #include "honda_v0.h"
 #include "honda_v2.h"
-#include "mitsubishi.h"
 
 // European manufacturers - VAG Group
 #include "vw.h"
@@ -29,7 +27,6 @@
 
 // European manufacturers - Fiat/Japanese
 #include "fiat_v0.h"
-#include "nissan_v0.h"
 
 // American manufacturers
 // Note: tesla.h is not implemented yet

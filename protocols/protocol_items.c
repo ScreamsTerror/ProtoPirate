@@ -13,10 +13,8 @@ const SubGhzProtocol* protopirate_protocol_registry_items[] = {
     &ford_protocol_v0,
     &subaru_protocol,
     &suzuki_protocol,
-    &mazda_protocol,
     &honda_protocol_v0,
     &honda_protocol_v2,
-    &mitsubishi_protocol,
     
     // European VAG Group
     &vw_protocol,
@@ -26,9 +24,6 @@ const SubGhzProtocol* protopirate_protocol_registry_items[] = {
     
     // European Fiat
     &fiat_protocol_v0,
-    
-    // Japanese manufacturers
-    &nissan_protocol_v0,
 };
 
 const SubGhzProtocolRegistry protopirate_protocol_registry = {
