@@ -10,14 +10,14 @@
 #include "kia_v2.h"
 #include "kia_v3_v4.h"
 #include "kia_v5.h"
-#include "hyundai.h"
+#include "hyundai_v0.h"
 
 // Asian manufacturers
 #include "ford_v0.h"
 #include "subaru.h"
 #include "suzuki.h"
 #include "mazda.h"
-#include "honda.h"
+#include "honda_v0.h"
 #include "mitsubishi.h"
 
 // European manufacturers - VAG Group
@@ -28,16 +28,13 @@
 #include "citroen.h"
 
 // European manufacturers - BMW/Fiat
-#include "bmw.h"
+#include "bmw_v0.h"
 #include "fiat_v0.h"
 #include "toyota_v0.h"
-#include "honda_v0.h"
 #include "nissan_v0.h"
-#include "bmw_v0.h"
 #include "mercedes_v0.h"
-#include "hyundai_v0.h"
 
 // American manufacturers
-#include "tesla.h"
+// Note: tesla.h is not implemented yet
 
 extern const SubGhzProtocolRegistry protopirate_protocol_registry;

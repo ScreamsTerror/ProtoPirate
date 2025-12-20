@@ -7,14 +7,14 @@ const SubGhzProtocol* protopirate_protocol_registry_items[] = {
     &kia_protocol_v2,
     &kia_protocol_v3_v4,
     &kia_protocol_v5,
-    &hyundai_protocol,
+    &hyundai_protocol_v0,
     
     // Asian manufacturers
     &ford_protocol_v0,
     &subaru_protocol,
     &suzuki_protocol,
     &mazda_protocol,
-    &honda_protocol,
+    &honda_protocol_v0,
     &mitsubishi_protocol,
     
     // European VAG Group
@@ -25,19 +25,13 @@ const SubGhzProtocol* protopirate_protocol_registry_items[] = {
     &citroen_protocol,
     
     // European BMW/Fiat
-    &bmw_protocol,
+    &bmw_protocol_v0,
     &fiat_protocol_v0,
     
     // Japanese/Korean manufacturers
     &toyota_protocol_v0,
-    &honda_protocol_v0,
     &nissan_protocol_v0,
-    &bmw_protocol_v0,
     &mercedes_protocol_v0,
-    &hyundai_protocol_v0,
-    
-    // American
-    &tesla_protocol,
 };
 
 const SubGhzProtocolRegistry protopirate_protocol_registry = {
